@@ -272,7 +272,6 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
           ),
           const SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -282,10 +281,23 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   Text("Height: 7.84 ft", style: TextStyle(fontSize: 14)),
                 ],
               ),
-              Image.asset('assets/container.png', width: 100),
+              const SizedBox(width: 50),
+              Image.asset(
+                'assets/container.png',
+                width: 180,
+                height: 80,
+              ),
             ],
           ),
           const SizedBox(height: 20),
+          OutlinedButton.icon(
+            onPressed: () {},
+            icon: ImageIcon(
+              AssetImage('assets/search.png'),
+              size: 20,
+            ),
+            label: Text("Search"),
+          ),
         ],
       ),
     );
