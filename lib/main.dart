@@ -31,6 +31,8 @@ class FreightSearchForm extends StatefulWidget {
 
 class _FreightSearchFormState extends State<FreightSearchForm> {
   bool isChecked = false;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
   final TextEditingController _originController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -93,6 +95,10 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                       controller: controller,
                       focusNode: focusNode,
                       decoration: const InputDecoration(
+                        prefixIcon: ImageIcon(
+                          AssetImage('assets/location.png'),
+                          size: 10,
+                        ),
                         labelText: 'Origin',
                         border: OutlineInputBorder(),
                       ),
@@ -115,6 +121,10 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                       controller: controller,
                       focusNode: focusNode,
                       decoration: const InputDecoration(
+                        prefixIcon: ImageIcon(
+                          AssetImage('assets/location.png'),
+                          size: 10,
+                        ),
                         labelText: 'Destination',
                         border: OutlineInputBorder(),
                       ),
@@ -169,7 +179,10 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                     labelText: 'Cut Off Date',
                     border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_today),
+                      icon: ImageIcon(
+                        AssetImage('assets/calendar.png'),
+                        size: 20,
+                      ),
                       onPressed: () => _selectDate(context),
                     ),
                   ),
@@ -182,18 +195,18 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
             children: [
               const Text("FCL"),
               Checkbox(
-                  value: isChecked,
+                  value: isChecked1,
                   onChanged: (bool? value) {
                     setState(() {
-                      isChecked = value!;
+                      isChecked1 = value!;
                     });
                   }),
               const Text("LCL"),
               Checkbox(
-                  value: isChecked,
+                  value: isChecked2,
                   onChanged: (bool? value) {
                     setState(() {
-                      isChecked = value!;
+                      isChecked2 = value!;
                     });
                   }),
             ],
@@ -269,12 +282,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   Text("Height: 7.84 ft", style: TextStyle(fontSize: 14)),
                 ],
               ),
-              Image.network(
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/40ft_container.png/800px-40ft_container.png',
-                width: 100,
-                height: 50,
-                fit: BoxFit.contain,
-              ),
+              Image.asset('assets/container.png', width: 100),
             ],
           ),
           const SizedBox(height: 20),
