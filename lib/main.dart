@@ -177,6 +177,107 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
               ),
             ],
           ),
+          Text('heading'),
+          Row(
+            children: [
+              const Text("FCL"),
+              Checkbox(
+                  value: isChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked = value!;
+                    });
+                  }),
+              const Text("LCL"),
+              Checkbox(
+                  value: isChecked,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isChecked = value!;
+                    });
+                  }),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              Expanded(
+                child: DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    labelText: 'Container Size',
+                    border: OutlineInputBorder(),
+                  ),
+                  items: [
+                    '20\' Standard',
+                    '40\' Standard',
+                    '40\' High Cube',
+                    '45\' High Cube'
+                  ]
+                      .map((size) => DropdownMenuItem<String>(
+                            value: size,
+                            child: Text(size),
+                          ))
+                      .toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      // Update selected container size (if needed)
+                    });
+                  },
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'No of Boxes',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Weight (Kg)',
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          const Divider(),
+          const SizedBox(height: 10),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Container Internal Dimensions:",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text("Length: 39.46 ft", style: TextStyle(fontSize: 14)),
+                  Text("Width: 7.70 ft", style: TextStyle(fontSize: 14)),
+                  Text("Height: 7.84 ft", style: TextStyle(fontSize: 14)),
+                ],
+              ),
+              Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/40ft_container.png/800px-40ft_container.png',
+                width: 100,
+                height: 50,
+                fit: BoxFit.contain,
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
