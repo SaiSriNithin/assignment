@@ -103,6 +103,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -224,10 +225,12 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   ),
                 ],
               ),
-              Text('heading'),
+              Text(
+                'Shipment Type :',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               Row(
                 children: [
-                  const Text("FCL"),
                   Checkbox(
                       value: isChecked1,
                       onChanged: (bool? value) {
@@ -235,7 +238,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                           isChecked1 = value!;
                         });
                       }),
-                  const Text("LCL"),
+                  const Text("FCL"),
                   Checkbox(
                       value: isChecked2,
                       onChanged: (bool? value) {
@@ -243,6 +246,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                           isChecked2 = value!;
                         });
                       }),
+                  const Text("LCL"),
                 ],
               ),
               const SizedBox(height: 10),
@@ -295,7 +299,13 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                 ],
               ),
               const SizedBox(height: 10),
-              const Divider(),
+              Row(
+                children: [
+                  Image.asset('assets/info-circle.png'),
+                  const Text(
+                      'To obtain accurate rate for spot rate with guaranteed space and booking, please ensure your container count and weight per container is accurate.'),
+                ],
+              ),
               const SizedBox(height: 10),
               const Align(
                 alignment: Alignment.centerLeft,
