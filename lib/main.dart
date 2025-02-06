@@ -15,7 +15,28 @@ class FreightSearchApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       home: Scaffold(
-        appBar: AppBar(title: const Text('Freight Rate Search')),
+        backgroundColor: Color.fromARGB(255, 230, 234, 248),
+        appBar: AppBar(
+          title: const Text('Freight Rate Search'),
+          actions: [
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(
+                  color: Color.fromARGB(255, 1, 57, 255),
+                ),
+                iconColor: Color.fromARGB(255, 1, 57, 255),
+                backgroundColor: Color.fromARGB(255, 230, 235, 255),
+              ),
+              onPressed: () {},
+              label: Text(
+                "History",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 1, 57, 255),
+                ),
+              ),
+            ),
+          ],
+        ),
         body: const FreightSearchForm(),
       ),
     );
@@ -78,6 +99,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
+        color: Color.fromARGB(255, 255, 255, 255),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -293,13 +315,30 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                 ],
               ),
               const SizedBox(height: 20),
-              OutlinedButton.icon(
-                onPressed: () {},
-                icon: ImageIcon(
-                  AssetImage('assets/search.png'),
-                  size: 20,
-                ),
-                label: Text("Search"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        color: Color.fromARGB(255, 1, 57, 255),
+                      ),
+                      iconColor: Color.fromARGB(255, 1, 57, 255),
+                      backgroundColor: Color.fromARGB(255, 230, 235, 255),
+                    ),
+                    onPressed: () {},
+                    icon: ImageIcon(
+                      AssetImage('assets/search.png'),
+                      size: 20,
+                    ),
+                    label: Text(
+                      "Search",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 1, 57, 255),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
