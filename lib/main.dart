@@ -54,6 +54,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
   bool isChecked = false;
   bool isChecked1 = false;
   bool isChecked2 = false;
+  bool isChecked3 = false;
   final TextEditingController _originController = TextEditingController();
   final TextEditingController _destinationController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -99,7 +100,6 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
-        color: Color.fromARGB(255, 255, 255, 255),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -169,7 +169,16 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                           isChecked = value!;
                         });
                       }),
-                  const Text("Data"),
+                  const Text("Include nearby origin ports"),
+                  const SizedBox(width: 527),
+                  Checkbox(
+                      value: isChecked3,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          isChecked3 = value!;
+                        });
+                      }),
+                  const Text("Include nearby destination ports"),
                 ],
               ),
               const SizedBox(height: 10),
