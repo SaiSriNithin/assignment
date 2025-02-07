@@ -141,6 +141,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                                 color: Colors.grey,
                               ),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         );
                       },
@@ -168,6 +173,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                             labelText: 'Destination',
                             labelStyle: TextStyle(color: Colors.grey),
                             enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.grey,
                               ),
@@ -227,6 +237,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                             color: Colors.grey,
                           ),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       items: commodities.map((String commodity) {
                         return DropdownMenuItem<String>(
@@ -250,6 +265,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                         labelText: 'Cut Off Date',
                         labelStyle: TextStyle(color: Colors.grey),
                         enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.grey,
                           ),
@@ -312,6 +332,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                             color: Colors.grey,
                           ),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       items: [
                         '20\' Standard',
@@ -343,6 +368,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                             color: Colors.grey,
                           ),
                         ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       keyboardType: TextInputType.number,
                     ),
@@ -355,6 +385,11 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                         hintText: 'Weight (Kg)',
                         labelStyle: TextStyle(color: Colors.grey),
                         enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.grey,
                           ),
