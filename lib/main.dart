@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -17,7 +20,10 @@ class FreightSearchApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color.fromARGB(255, 230, 234, 248),
         appBar: AppBar(
-          title: const Text('Freight Rate Search'),
+          title: const Text(
+            'Search the best Freight Rates',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           actions: [
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(
@@ -34,6 +40,9 @@ class FreightSearchApp extends StatelessWidget {
                   color: Color.fromARGB(255, 1, 57, 255),
                 ),
               ),
+            ),
+            SizedBox(
+              width: 20,
             ),
           ],
         ),
@@ -98,10 +107,10 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16),
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -126,7 +135,12 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                               size: 10,
                             ),
                             labelText: 'Origin',
-                            border: OutlineInputBorder(),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         );
                       },
@@ -152,7 +166,12 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                               size: 10,
                             ),
                             labelText: 'Destination',
-                            border: OutlineInputBorder(),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                              ),
+                            ),
                           ),
                         );
                       },
@@ -160,29 +179,41 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   Checkbox(
+                      side: BorderSide(color: Colors.grey),
                       value: isChecked,
                       onChanged: (bool? value) {
                         setState(() {
                           isChecked = value!;
                         });
                       }),
-                  const Text("Include nearby origin ports"),
+                  const Text(
+                    "Include nearby origin ports",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 102, 102, 102),
+                    ),
+                  ),
                   const SizedBox(width: 527),
                   Checkbox(
+                      side: BorderSide(color: Colors.grey),
                       value: isChecked3,
                       onChanged: (bool? value) {
                         setState(() {
                           isChecked3 = value!;
                         });
                       }),
-                  const Text("Include nearby destination ports"),
+                  const Text(
+                    "Include nearby destination ports",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 102, 102, 102),
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               Row(
                 children: [
                   Expanded(
@@ -190,7 +221,12 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                       value: selectedCommodity,
                       decoration: const InputDecoration(
                         labelText: 'Commodity',
-                        border: OutlineInputBorder(),
+                        labelStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       items: commodities.map((String commodity) {
                         return DropdownMenuItem<String>(
@@ -212,7 +248,12 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                       readOnly: true,
                       decoration: InputDecoration(
                         labelText: 'Cut Off Date',
-                        border: const OutlineInputBorder(),
+                        labelStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                         suffixIcon: IconButton(
                           icon: ImageIcon(
                             AssetImage('assets/calendar.png'),
@@ -225,13 +266,20 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 'Shipment Type :',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
+              SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   Checkbox(
+                      side: BorderSide(color: Colors.grey),
                       value: isChecked1,
                       onChanged: (bool? value) {
                         setState(() {
@@ -240,6 +288,7 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                       }),
                   const Text("FCL"),
                   Checkbox(
+                      side: BorderSide(color: Colors.grey),
                       value: isChecked2,
                       onChanged: (bool? value) {
                         setState(() {
@@ -252,11 +301,17 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
               const SizedBox(height: 10),
               Row(
                 children: [
-                  Expanded(
+                  Flexible(
+                    flex: 2,
                     child: DropdownButtonFormField<String>(
                       decoration: const InputDecoration(
                         labelText: 'Container Size',
-                        border: OutlineInputBorder(),
+                        labelStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       items: [
                         '20\' Standard',
@@ -271,27 +326,39 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                           .toList(),
                       onChanged: (newValue) {
                         setState(() {
-                          // Update selected container size (if needed)
+                          // Handle selection
                         });
                       },
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Expanded(
+                  Flexible(
+                    flex: 1,
                     child: TextField(
                       decoration: const InputDecoration(
-                        labelText: 'No of Boxes',
-                        border: OutlineInputBorder(),
+                        hintText: 'No of Boxes',
+                        labelStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       keyboardType: TextInputType.number,
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Expanded(
+                  Flexible(
+                    flex: 1,
                     child: TextField(
                       decoration: const InputDecoration(
-                        labelText: 'Weight (Kg)',
-                        border: OutlineInputBorder(),
+                        hintText: 'Weight (Kg)',
+                        labelStyle: TextStyle(color: Colors.grey),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey,
+                          ),
+                        ),
                       ),
                       keyboardType: TextInputType.number,
                     ),
@@ -300,13 +367,23 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
               ),
               const SizedBox(height: 10),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/info-circle.png'),
-                  const Text(
-                      'To obtain accurate rate for spot rate with guaranteed space and booking, please ensure your container count and weight per container is accurate.'),
+                  const Icon(
+                    Icons.info_outline,
+                    size: 18,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(width: 5),
+                  Expanded(
+                    child: Text(
+                      'To obtain accurate rate for spot rate with guaranteed space and booking, please ensure your container count and weight per container is accurate.',
+                      style: TextStyle(color: Colors.grey.shade700),
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -314,15 +391,23 @@ class _FreightSearchFormState extends State<FreightSearchForm> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 10),
               Row(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
-                      Text("Length: 39.46 ft", style: TextStyle(fontSize: 14)),
-                      Text("Width: 7.70 ft", style: TextStyle(fontSize: 14)),
-                      Text("Height: 7.84 ft", style: TextStyle(fontSize: 14)),
+                      Text(
+                        "\nLength: 39.46 ft\n",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      Text(
+                        "Width: 7.70 ft\n",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      Text(
+                        "Height: 7.84 ft\n",
+                        style: TextStyle(fontSize: 14),
+                      ),
                     ],
                   ),
                   const SizedBox(width: 50),
